@@ -5,37 +5,37 @@ puts "I've thought of a number between 1 and 100."
 puts "Try to guess it!"
 puts
 
-tajne_cislo = rand(1..100)
-pocet_pokusu = 0
-max_pokusu = 10
+secret_number = rand(1..100)
+attempts = 0
+max_attempts = 10
 
 loop do
-  print "Your guess (#{pocet_pokusu + 1}/#{max_pokusu}): "
-  vstup = gets.chomp
+  print "Your guess (#{attempts + 1}/#{max_attempts}): "
+  input = gets.chomp
 
-  unless vstup =~ /\A\d+\z/
+  unless input =~ /\A\d+\z/
     puts "Please enter a valid number."
     next
   end
 
-  tip = vstup.to_i
-  pocet_pokusu += 1
+  guess = input.to_i
+  attempts += 1
 
-  if tip < tajne_cislo
+  if guess < secret_number
     puts "📈 Too low! Try again."
-  elsif tip > tajne_cislo
+  elsif guess > secret_number
     puts "📉 Too high! Try again."
   else
     puts
-    puts "🎉 You guessed it! The number was #{tajne_cislo}."
-    puts "It took you #{pocet_pokusu} attempts!"
+    puts "🎉 You guessed it! The number was #{secret_number}."
+    puts "It took you #{attempts} attempts!"
     break
   end
 
-  if pocet_pokusu >= max_pokusu
+  if attempts >= max_attempts
     puts
     puts "💀 You've run out of attempts."
-    puts "The number was: #{tajne_cislo}"
+    puts "The number was: #{secret_number}"
     break
   end
 end
@@ -43,4 +43,4 @@ end
 puts
 puts "Thank you for playing!"
 
-github_url = "https://github.com/dfnykaa/number-guessing-game"
+github_url = "https://github.com/dfnyka/number_guessing_game"
